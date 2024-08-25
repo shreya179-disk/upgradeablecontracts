@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.18;
 
 import {UUPSUpgradeable} from "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol";
 import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
@@ -7,7 +7,7 @@ import {OwnableUpgradeable} from"@openzeppelin/contracts-upgradeable/access/Owna
 
 contract Boxv1 is Initializable, UUPSUpgradeable, OwnableUpgradeable {
     uint256 public num;
-    uint internal favnum;
+    uint public favnum;
 
     // @custom:oz-upgrades-unsafe-allow constructor
     constructor() {
@@ -20,15 +20,15 @@ contract Boxv1 is Initializable, UUPSUpgradeable, OwnableUpgradeable {
        
     }
 
-    function setNum(uint256 _num) external {
-        num = _num;
+    function getNum() public view returns (uint256) {
+         return num;
     }
 
-    function getVersion() external pure returns (uint) {
-        return 10;
+    function getVersion() public pure returns (uint) {
+        return 1;
     }
 
-    function getfavnum() external view returns (uint) {
+    function getfavnum() public view returns (uint) {
         return favnum;
     }
 
